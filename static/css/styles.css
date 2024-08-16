@@ -1,0 +1,153 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow-y: scroll; /* Ensures vertical scrollbar is always visible */
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color changes */
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #212121;
+    color: #ffffff;
+}
+
+body.dark-mode .chart-container {
+    background-color: #212121;
+    color: #ffffff;
+}
+
+.dark-mode-label {
+    font-size: 12px; 
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px; /* Add some space between the toggle and the text */
+}
+
+/* Title Page */
+.title-page {
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.title-page h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Dropdown */
+.dropdown-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+select {
+    padding: 5px;
+    font-size: 1em;
+    width: 200px; /* Adjust width to make it narrower */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* To make it rectangular, adjust the border-radius */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific styles for the Industry Title dropdown */
+#industry-select {
+    width: 350px;
+}
+
+/* Chart Container */
+.chart-container {
+    margin-bottom: 50px; 
+}
+
+/* Dark Mode Toggle and Zoom*/
+.controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.zoom-controls button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Default background color */
+    transition: .4s; /* Transition for smooth sliding */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white; /* Color of the slider button */
+    transition: .4s; /* Transition for smooth sliding */
+}
+
+input:checked + .slider {
+    background-color: #2196F3; /* Background color when checked */
+}
+
+input:checked + .slider:before {
+    transform: translateX(10px); /* Move the slider button when checked */
+}
+
+.slider.round {
+    border-radius: 15px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* JSON link */
+.json-link-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.json-link {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.json-link a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.json-link a:hover {
+    text-decoration: underline;
+}

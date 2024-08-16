@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California Employment Trends</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Load Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Load D3.js for data manipulation -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <!-- Title and Dark Mode Toggle -->
+    <div class="title-page">
+        <h1>California Employment Trends</h1>
+        <p>Explore the employment data for different industries and counties in California</p>
+        <div class="controls-container">
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle"> 
+                <span class="slider round"></span>
+            </label>
+            <span class="dark-mode-label">Dark Mode</span>
+
+            <!-- Zoom Controls -->
+            <div class="zoom-controls">
+                <button id="zoomIn">Zoom In</button>
+                <button id="zoomOut">Zoom Out</button>
+                <button id="resetZoom">Reset Zoom</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart for Unemployment Rate -->
+    <div class="chart-container">
+        <canvas id="unemploymentrate-line-chart"></canvas>
+    </div>
+
+    <!-- Date Filter Dropdowns For Employment vs. Unemployment Chart -->
+    <div class="dropdown-container">
+        <p>Use the start and end date selectors to filter the employment vs. unemployment chart.</p>
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date">
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date">
+        <button id="update-chart">Update Chart</button>
+    </div>
+
+    <!-- Chart for Employment vs. Unemployment -->
+    <div class="chart-container">
+        <canvas id="employment-unemployment-chart"></canvas>
+    </div>
+
+    <!-- Area Dropdown for Unemployment Rate by County Bar Chart -->
+    <div class="card">
+        <div class="dropdown-container">
+            <p>Select an area from the dropdown to see the unemployment rate in that area.</p>
+            <label for="area-select">Area Name:</label>
+            <select id="area-select">
+                <option value="">Select Area</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Bar Chart for Unemployment Rate by County -->
+    <div class="chart-container">
+        <canvas id="new-bar-chart"></canvas>
+    </div>
+
+    <!-- Industry Dropdown for Line Chart -->
+    <div class="card">
+        <div class="dropdown-container">
+            <p>Choose an industry to view its employment growth rate over the years.</p>
+            <label for="industry-select">Industry Title/Type of Employment:</label>
+            <select id="industry-select">
+                <option value="">Select an Industry</option>
+                {% for industry in industries %}
+                <option value="{{ industry }}">{{ industry }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <!-- Line Chart for Employment Growth Rate by Industry -->
+    <div class="chart-container">
+        <canvas id="industry-line-chart"></canvas>
+    </div>
+
+    <!-- Links to JSON Data -->
+    <div class="json-link-container">
+        <div class="json-link">
+            <a href="{{ url_for('ca_data') }}" target="_blank">View CA Data JSON</a><br>
+            <a href="{{ url_for('ca_counties_data') }}" target="_blank">View CA Counties Data JSON</a>
+        </div>
+    </div>
+
+    <!-- Load custom JavaScript for charts -->
+    <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+
+    <!-- Load custom JavaScript for zoom feature -->
+    <script src="{{ url_for('static', filename='js/zoom.js') }}"></script>
+</body>
+</html>
